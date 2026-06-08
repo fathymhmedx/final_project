@@ -1,0 +1,821 @@
+{
+  "info": {
+    "_postman_id": "f4d543c7-eb2c-48ec-964e-af9009be30aa",
+    "name": "Valero",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43458025"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Fathy\",\r\n  \"email\": \"fathy@gmassildd1.com\",\r\n  \"password\": \"Fathy1234@\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJTVFVERU5UIiwiaWF0IjoxNzczMjUyOTc0LCJleHAiOjE3NzM4NTc3NzR9.dMuwkKTvIiAFHi-lXK3Z0EBGzogFxldc42tRbw7z7EI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   // USER\r\n  \"email\": \"fathy@test.com\",\r\n  \"password\": \"123456\"\r\n//   \"email\": \"fathy@gmassildd1.com\",\r\n//   \"password\": \"Fathy1234@\"\r\n\r\n//    // ADMIN\r\n//   \"email\": \"fathy@gmail.com\",\r\n//   \"password\": \"Fathy1234@\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJTVFVERU5UIiwiaWF0IjoxNzczMjUyOTc0LCJleHAiOjE3NzM4NTc3NzR9.dMuwkKTvIiAFHi-lXK3Z0EBGzogFxldc42tRbw7z7EI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/auth/refresh-token",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "refresh-token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout (Protected)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI0ZTY1MTc0YTU0ODZjNTNkOWVkOWQiLCJpYXQiOjE3ODA4MDUzMzUsImV4cCI6MTc4MDgwNjIzNX0.wYI52PE0fWtouSg6tk2CN0AYq7jgv_hrrSXWY2Pk4pA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/auth/logout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get Me (Protected)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4OTIzNjUsImV4cCI6MTc4MDg5MzI2NX0.8_QIVMMREccsLKKRHfy9HEEOnvOsWtVDVE6TzGMg7-4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/users/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Users (Protected - Admin)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI0ZTY1MTc0YTU0ODZjNTNkOWVkOWQiLCJpYXQiOjE3ODA4MDg3MTAsImV4cCI6MTc4MDgwOTYxMH0.c9BoMsklmq3PcCMwvii3lKY8rOVWd1NcLbfbmJ4lvqM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User By Id (Public Profile)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/users/6a1fe37ca59d27cba6f81466",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "6a1fe37ca59d27cba6f81466"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update My Profile (Protected) form-data for images",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4OTIzNjUsImV4cCI6MTc4MDg5MzI2NX0.8_QIVMMREccsLKKRHfy9HEEOnvOsWtVDVE6TzGMg7-4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "profileImage",
+                  "type": "file",
+                  "uuid": "f691eab3-9e28-4914-acf5-1bc4d7ee6f61",
+                  "src": "/D:/Matiearials tech/Forever-Full-Stack/frontend/src/assets/hero_img.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/users/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Toggle Block User (Protected - Admin)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI0ZTY1MTc0YTU0ODZjNTNkOWVkOWQiLCJpYXQiOjE3ODA4MDk0NjgsImV4cCI6MTc4MDgxMDM2OH0.QLhOGxDClkHYlG1Ht_wpsATez5oiJAnv_owgsT-wTXM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/v1/users/6a1fe37ca59d27cba6f81466/toggle-block",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "6a1fe37ca59d27cba6f81466",
+                "toggle-block"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Poducts",
+      "item": [
+        {
+          "name": "Get My Products - Search, filter (Protected)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4MTQ1NzEsImV4cCI6MTc4MDgxNTQ3MX0.uSX0aTU9CXzvTbzNj6ZP6MLE6ofW3gjwmbAkM03iW_0",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/products/my?condition=new&category=motorcycle,parts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "my"
+              ],
+              "query": [
+                {
+                  "key": "price[gte]",
+                  "value": "100",
+                  "disabled": true
+                },
+                {
+                  "key": "price[lte]",
+                  "value": "1000",
+                  "disabled": true
+                },
+                {
+                  "key": "keyword",
+                  "value": "yamaha",
+                  "disabled": true
+                },
+                {
+                  "key": "category",
+                  "value": "motorcycle",
+                  "disabled": true
+                },
+                {
+                  "key": "condition",
+                  "value": "new"
+                },
+                {
+                  "key": "category",
+                  "value": "motorcycle,parts"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Products - Search, filter (Public)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJTVFVERU5UIiwiaWF0IjoxNzczMjUyOTc0LCJleHAiOjE3NzM4NTc3NzR9.dMuwkKTvIiAFHi-lXK3Z0EBGzogFxldc42tRbw7z7EI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "price[gte]",
+                  "value": "100",
+                  "disabled": true
+                },
+                {
+                  "key": "price[lte]",
+                  "value": "1000",
+                  "disabled": true
+                },
+                {
+                  "key": "keyword",
+                  "value": "yamaha",
+                  "disabled": true
+                },
+                {
+                  "key": "category",
+                  "value": "motorcycle",
+                  "disabled": true
+                },
+                {
+                  "key": "condition",
+                  "value": "new",
+                  "disabled": true
+                },
+                {
+                  "key": "category",
+                  "value": "motorcycle,parts",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Product (Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/v1/products/6a250d5e80708885f550146e",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "6a250d5e80708885f550146e"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Product (Protected) form-data if need upload images",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4OTM0ODYsImV4cCI6MTc4MDg5NDM4Nn0.0HYdRRBkZ7C_MK6iTMesKxrhRYMid1uhEHZnclXpSg4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Yamaha R6 Exhaust for test",
+                  "type": "text",
+                  "uuid": "e14e110f-27e2-4c84-be50-d8b836131b50"
+                },
+                {
+                  "key": "description",
+                  "value": "High performance exhaust for Yamaha R6",
+                  "type": "text",
+                  "uuid": "97754a67-27d8-4ef5-b717-b4edbacc8b66"
+                },
+                {
+                  "key": "category",
+                  "value": "motorcycle",
+                  "type": "text",
+                  "uuid": "85462239-c2ee-47f8-a693-3ba6eb48c972"
+                },
+                {
+                  "key": "price",
+                  "value": "50000",
+                  "type": "text",
+                  "uuid": "9dd55dbd-ab85-4bc1-a3bf-f8b5d1877892"
+                },
+                {
+                  "key": "condition",
+                  "value": "used",
+                  "type": "text",
+                  "uuid": "5ccc2db2-dd3a-48e5-9bd6-4b86faeedac0"
+                },
+                {
+                  "key": "location",
+                  "value": "cairo",
+                  "type": "text",
+                  "uuid": "f241b910-61c6-46db-bbc4-a37169a0b6be"
+                },
+                {
+                  "key": "images",
+                  "type": "file",
+                  "uuid": "f4cf72d6-570a-4555-9af3-0bd09ab47e76",
+                  "src": "/D:/Matiearials tech/Forever-Full-Stack/frontend/src/assets/p_img45.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product (Protected + OwnerShip)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI1MGZhNjUzODIyOWU2YjJmODZiMTUiLCJpYXQiOjE3ODA4MTM3NTgsImV4cCI6MTc4MDgxNDY1OH0.wlB1tVc4NvT4n3fDpCDLRskkHfuzs3P87Tdm560pH2s",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"price\": 700,\r\n  \"title\": \"Updated Yamaha Exhaust\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/products/6a250d5e80708885f550146e",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "6a250d5e80708885f550146e"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product (Protected + OwnerShip)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4MTM4NzQsImV4cCI6MTc4MDgxNDc3NH0.lSQ_0I5EDbSdlPAHoNZP7iRdl8agQOZQb8CDpy-MBMk",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"price\": 700,\r\n  \"title\": \"Updated Yamaha Exhaust\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/products/6a250d5e80708885f550146e",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "6a250d5e80708885f550146e"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Wishlist",
+      "item": [
+        {
+          "name": "Add product to wishlist",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4OTAyODEsImV4cCI6MTc4MDg5MTE4MX0.gQmc9GQRdrAwEA1aM7obs3FkuZr97cQh0IlnSfJ71wA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"productId\": \"6a263d649b8f5cff8f32ec9e\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/wishlist",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "wishlist"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove product from wishlist",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4OTAyODEsImV4cCI6MTc4MDg5MTE4MX0.gQmc9GQRdrAwEA1aM7obs3FkuZr97cQh0IlnSfJ71wA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/wishlist/6a263d649b8f5cff8f32ec9e",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "wishlist",
+                "6a263d649b8f5cff8f32ec9e"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get logged user wishlist",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4OTAyODEsImV4cCI6MTc4MDg5MTE4MX0.gQmc9GQRdrAwEA1aM7obs3FkuZr97cQh0IlnSfJ71wA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/wishlist",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "wishlist"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
