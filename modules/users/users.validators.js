@@ -9,5 +9,6 @@ exports.updateMeSchema = Joi.object({
 
     bikeType: Joi.string().trim().max(50),
 
-    profileImage: Joi.string().uri().allow(""),
+    profileImage: Joi.string().allow(""),
+    
 });

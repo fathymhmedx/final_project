@@ -14,11 +14,9 @@ exports.createProductSchema = Joi.object({
 
     price: Joi.number().min(0).required(),
 
-    images: Joi.array().items(
-        Joi.object({
-            url: Joi.string().uri().required(),
-        })
-    ).optional(),
+    images: Joi.array()
+        .items(Joi.object({ url: Joi.string().optional() }))
+        .optional(),
 
     condition: Joi.string().valid("new", "used").required(),
 
@@ -37,11 +35,9 @@ exports.updateProductSchema = Joi.object({
 
     price: Joi.number().min(0),
 
-    images: Joi.array().items(
-        Joi.object({
-            url: Joi.string().uri(),
-        })
-    ),
+    images: Joi.array()
+        .items(Joi.object({ url: Joi.string().optional() }))
+        .optional(),
 
     condition: Joi.string().valid("new", "used"),
 
