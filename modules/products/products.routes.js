@@ -16,6 +16,10 @@ const {
     updateProductSchema,
 } = require("./products.validators");
 
+const { uploadFields } = require("../../shared/middlewares/uploadImage.middleware");
+
+const { resizeProductImages } = require("../../shared/middlewares/imageProcessing.middleware");
+
 const { protect } = require("../../shared/middlewares/auth.middleware");
 
 /**
@@ -35,6 +39,10 @@ router.get("/:id", getProduct);
 router.post(
     "/",
     protect,
+    uploadFields([
+        { name: "images", maxCount: 5 },
+    ]),
+    resizeProductImages,
     validate(createProductSchema),
     createProduct
 );

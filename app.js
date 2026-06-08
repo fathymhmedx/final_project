@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const path = require("path");
 const connectedDB = require("./shared/config/database");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -25,6 +26,8 @@ app.use(express.json());
 
 // 2.Cookie Parser
 app.use(cookieParser());
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // 3.Logger
 if (process.env.NODE_ENV === "dev") {
   app.use((req, res, next) => {
