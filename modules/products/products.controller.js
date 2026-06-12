@@ -34,14 +34,19 @@ exports.createProduct = asyncHandler(async (req, res) => {
 // Price Range: /api/v1/products?price[gte]=100&price[lte]=1000
 // Multi category: /api/v1/products?category=motorcycle, parts
 exports.getAllProducts = asyncHandler(async (req, res) => {
-    const features = new ApiFeatures(Product.find().lean(), req.query)
+    const features = new ApiFeatures(Product.find({
+        isDeleted: false,
+        status: { $ne: "archived" }
+    }).lean(), req.query)
         .search()
         .filter()
+        .paginate()
 
     const products = await features.query;
 
     res.status(200).json({
         status: "success",
+        pagination: features.paginationResult,
         results: products.length,
         data: {
             products,
@@ -55,7 +60,18 @@ exports.getAllProducts = asyncHandler(async (req, res) => {
  * @access  Public
  */
 exports.getProduct = asyncHandler(async (req, res, next) => {
-    const product = await Product.findById(req.params.id).populate("seller", "name email");
+    const product = await Product.findOneAndUpdate(
+        {
+            _id: req.params.id,
+            isDeleted: false
+        },
+        {
+            $inc: { viewsCount: 1 }
+        },
+        {
+            new: true
+        }
+    ).populate("seller", "name email");
 
     if (!product) {
         return next(new ApiError("Product not found", 404));
@@ -155,5 +171,24 @@ exports.getMyProducts = asyncHandler(async (req, res) => {
         data: {
             products,
         },
+    });
+});
+
+/**
+ * @route /api/v1/admin/products/:id/hard 
+ * @access  Private (admin)
+ */
+exports.hardDeleteProduct = asyncHandler(async (req, res, next) => {
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+        return next(new ApiError("Product not found", 404));
+    }
+
+    await Product.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({
+        status: "success",
+        message: "Product permanently deleted",
     });
 });

@@ -2,9 +2,13 @@ const validate = (schema, source = "body") => {
     const allowedSources = ["body", "params", "query"];
 
     if (!allowedSources.includes(source)) {
-        throw new Error(`Invalid validation source: ${source}`);
+        return (req, res, next) => {
+            return res.status(500).json({
+                success: false,
+                message: `Invalid validation source: ${source}`,
+            });
+        };
     }
-
     return (req, res, next) => {
         const { error, value } = schema.validate(req[source], {
             abortEarly: false,

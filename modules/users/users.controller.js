@@ -2,6 +2,7 @@
 const User = require("./users.model");
 const asyncHandler = require("express-async-handler");
 const ApiError = require("../../shared/errors/ApiError");
+const ApiFeatures = require("../../shared/utils/apiFeatures");
 
 /**
  * @desc    Get current logged-in user profile
@@ -64,7 +65,7 @@ exports.updateMe = asyncHandler(async (req, res, next) => {
  */
 exports.getUserById = asyncHandler(async (req, res, next) => {
     const user = await User.findById(req.params.id).select(
-        "name bio location bikeType profileImage createdAt"
+        "name bio location bikeType profileImage createdAt rank isVerified followersCount followingCount"
     );
 
     if (!user) {
@@ -118,6 +119,214 @@ exports.toggleBlockUser = asyncHandler(async (req, res, next) => {
         message: `User is now ${user.isBlocked ? "blocked" : "active"}`,
         data: {
             isBlocked: user.isBlocked,
+        },
+    });
+});
+
+const updateUserRank = async (userId) => {
+    const user = await User.findById(userId);
+
+    if (!user) return;
+
+    const followersCount = user.followers.length;
+
+    let newRank = "New Rider";
+
+    if (followersCount >= 50) {
+        newRank = "Elite Member";
+    } else if (followersCount >= 5) {
+        newRank = "Active Rider";
+    }
+
+    // Admin always keeps special label
+    if (user.role === "admin") {
+        newRank = "Administrator";
+    }
+
+    user.rank = newRank;
+
+    await user.save();
+};
+
+
+exports.followUser = asyncHandler(async (req, res, next) => {
+    const currentUserId = req.user._id;
+    const targetUserId = req.params.id;
+
+    if (currentUserId.equals(targetUserId)) {
+        throw new ApiError("You cannot follow yourself", 400);
+    }
+
+    const targetUserExists = await User.exists({ _id: targetUserId });
+
+    if (!targetUserExists) {
+        throw new ApiError("User not found", 404);
+    }
+
+    // Prevent duplicate follow (idempotent)
+    const alreadyFollowing = await User.exists({
+        _id: currentUserId,
+        following: targetUserId,
+    });
+
+    if (alreadyFollowing) {
+        return res.status(200).json({
+            status: "success",
+            message: "Already following this user",
+        });
+    }
+
+    await Promise.all([
+        User.findByIdAndUpdate(currentUserId, {
+            $addToSet: { following: targetUserId },
+            $inc: { followingCount: 1 },
+        }),
+
+        User.findByIdAndUpdate(targetUserId, {
+            $addToSet: { followers: currentUserId },
+            $inc: { followersCount: 1 },
+        }),
+    ]);
+    await updateUserRank(targetUserId);
+
+    res.status(200).json({
+        status: "success",
+        message: "Followed successfully",
+    });
+});
+
+exports.unfollowUser = asyncHandler(async (req, res, next) => {
+    const currentUserId = req.user._id;
+    const targetUserId = req.params.id;
+
+    if (currentUserId.equals(targetUserId)) {
+        throw new ApiError("You cannot unfollow yourself", 400);
+    }
+
+    const targetUserExists = await User.exists({ _id: targetUserId });
+
+    if (!targetUserExists) {
+        throw new ApiError("User not found", 404);
+    }
+
+    const isFollowing = await User.exists({
+        _id: currentUserId,
+        following: targetUserId,
+    });
+
+    if (!isFollowing) {
+        return res.status(200).json({
+            status: "success",
+            message: "You are not following this user",
+        });
+    }
+
+    await Promise.all([
+        User.findByIdAndUpdate(currentUserId, {
+            $pull: { following: targetUserId },
+            $inc: { followingCount: -1 },
+        }),
+
+        User.findByIdAndUpdate(targetUserId, {
+            $pull: { followers: currentUserId },
+            $inc: { followersCount: -1 },
+        }),
+    ]);
+
+    await updateUserRank(targetUserId);
+
+    res.status(200).json({
+        status: "success",
+        message: "Unfollowed successfully",
+    });
+});
+
+exports.getUserFollowers = asyncHandler(async (req, res, next) => {
+    const userId = req.params.id;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+        throw new ApiError("User not found", 404);
+    }
+
+    // Base query: users who are in followers array
+    const baseQuery = User.find({
+        _id: { $in: user.followers },
+    });
+
+    const apiFeatures = new ApiFeatures(baseQuery, req.query)
+        .filter()
+        .search()
+
+    await apiFeatures.paginate();
+
+    const followers = await apiFeatures.query;
+
+    res.status(200).json({
+        status: "success",
+        results: followers.length,
+        pagination: apiFeatures.paginationResult,
+        data: {
+            followers,
+        },
+    });
+});
+
+
+exports.getUserFollowing = asyncHandler(async (req, res, next) => {
+    const userId = req.params.id;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+        throw new ApiError("User not found", 404);
+    }
+
+    const baseQuery = User.find({
+        _id: { $in: user.following },
+    });
+
+    const apiFeatures = new ApiFeatures(baseQuery, req.query)
+        .filter()
+        .search()
+
+    await apiFeatures.paginate();
+
+    const following = await apiFeatures.query;
+
+    res.status(200).json({
+        status: "success",
+        results: following.length,
+        pagination: apiFeatures.paginationResult,
+        data: {
+            following,
+        },
+    });
+});
+
+
+exports.toggleUserVerification = asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+        return next(new ApiError("User not found", 404));
+    }
+
+    // toggle verification
+    user.isVerified = !user.isVerified;
+
+    await user.save();
+
+    res.status(200).json({
+        status: "success",
+        message: `User is now ${user.isVerified ? "verified" : "unverified"}`,
+        data: {
+            user: {
+                id: user._id,
+                name: user.name,
+                isVerified: user.isVerified,
+            },
         },
     });
 });

@@ -52,6 +52,11 @@ const userSchema =  mongoose.Schema(
       type: Boolean,
       default: false
     },
+    rank: {
+      type: String,
+      enum: ["New Rider", "Active Rider", "Elite Member"],
+      default: "New Rider",
+    },
     role: {
       type: String,
       enum: ["user", "admin"],
@@ -70,6 +75,34 @@ const userSchema =  mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Product",
     }],
+
+    // USERS <-> USERS (Self Reference)
+
+    followers: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        index: true,
+      },
+    ],
+
+    following: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        index: true,
+      },
+    ],
+
+    followersCount: {
+      type: Number,
+      default: 0,
+    },
+
+    followingCount: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

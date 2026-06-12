@@ -7,7 +7,8 @@ const {
     getProduct,
     updateProduct,
     deleteProduct,
-    getMyProducts
+    getMyProducts,
+    hardDeleteProduct
 } = require("./products.controller");
 
 const validate = require("../../shared/middlewares/validation/validate.middleware");
@@ -20,7 +21,7 @@ const { uploadFields } = require("../../shared/middlewares/uploadImage.middlewar
 
 const { resizeProductImages } = require("../../shared/middlewares/imageProcessing.middleware");
 
-const { protect } = require("../../shared/middlewares/auth.middleware");
+const { protect, authorizeRoles } = require("../../shared/middlewares/auth.middleware");
 
 /**
  * PUBLIC ROUTES
@@ -60,5 +61,6 @@ router.delete(
     deleteProduct
 );
 
+router.delete("/:id/hard",protect, authorizeRoles("admin"), hardDeleteProduct);
 
 module.exports = router;

@@ -26,7 +26,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"name\": \"Fathy\",\r\n  \"email\": \"fathy@gmassildd1.com\",\r\n  \"password\": \"Fathy1234@\"\r\n}",
+              "raw": "{\r\n  \"name\": \"Fathy\",\r\n  \"email\": \"fathy2@gmail.com\",\r\n  \"password\": \"Fathy1234@\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -58,7 +58,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJTVFVERU5UIiwiaWF0IjoxNzczMjUyOTc0LCJleHAiOjE3NzM4NTc3NzR9.dMuwkKTvIiAFHi-lXK3Z0EBGzogFxldc42tRbw7z7EI",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI0ZTY1MTc0YTU0ODZjNTNkOWVkOWQiLCJpYXQiOjE3ODEyNDMxNDksImV4cCI6MTc4MTI0NDA0OX0.TOIH1XhnWSLyk1qb_pFDoTb6sZ3n7r7h3ASGSreDpNA",
                   "type": "string"
                 }
               ]
@@ -67,7 +67,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   // USER\r\n  \"email\": \"fathy@test.com\",\r\n  \"password\": \"123456\"\r\n//   \"email\": \"fathy@gmassildd1.com\",\r\n//   \"password\": \"Fathy1234@\"\r\n\r\n//    // ADMIN\r\n//   \"email\": \"fathy@gmail.com\",\r\n//   \"password\": \"Fathy1234@\"\r\n}",
+              "raw": "{\r\n//    // USER\r\n//   \"email\": \"fathy@test.com\",\r\n//   \"password\": \"123456\"\r\n//    // USER\r\n  \"email\": \"maiar@test.com\",\r\n  \"password\": \"Maiar@123456\"\r\n//   \"email\": \"fathy@gmassildd1.com\",\r\n//   \"password\": \"Fathy1234@\"\r\n\r\n//    // ADMIN\r\n//   \"email\": \"fathy@gmail.com\",\r\n//   \"password\": \"Fathy1234@\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -184,7 +184,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4OTIzNjUsImV4cCI6MTc4MDg5MzI2NX0.8_QIVMMREccsLKKRHfy9HEEOnvOsWtVDVE6TzGMg7-4",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEyNDg4NDgsImV4cCI6MTc4MTI0OTc0OH0.P2fXT2wuuVhAar-01Jzp4PMXrPo1JHJO8n6vSb8af0M",
                   "type": "string"
                 }
               ]
@@ -297,7 +297,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4OTIzNjUsImV4cCI6MTc4MDg5MzI2NX0.8_QIVMMREccsLKKRHfy9HEEOnvOsWtVDVE6TzGMg7-4",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODA5NzE3NDAsImV4cCI6MTc4MDk3MjY0MH0.8G6E3ae_ExUNeBtguyJWBFG2atYNkcmarEQ1-5OSvIA",
                   "type": "string"
                 }
               ]
@@ -364,12 +364,213 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Follow User - Protected",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI1MGZhNjUzODIyOWU2YjJmODZiMTUiLCJpYXQiOjE3ODEyNDU4NjQsImV4cCI6MTc4MTI0Njc2NH0.GxJGWbjepUOerYRvxE3bX74cvvXtz8DhKdD7EW0N_zM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/users/6a2774717f619029e34003b6/follow",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "6a2774717f619029e34003b6",
+                "follow"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "unFollow User - Protected",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI1MGZhNjUzODIyOWU2YjJmODZiMTUiLCJpYXQiOjE3ODEyNDU4NjQsImV4cCI6MTc4MTI0Njc2NH0.GxJGWbjepUOerYRvxE3bX74cvvXtz8DhKdD7EW0N_zM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/users/6a2774717f619029e34003b6/unfollow",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "6a2774717f619029e34003b6",
+                "unfollow"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Followers, Pagination (Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/v1/users/6a2774717f619029e34003b6/followers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "6a2774717f619029e34003b6",
+                "followers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Following, Pagination (Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/v1/users/6a2774717f619029e34003b6/following",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "6a2774717f619029e34003b6",
+                "following"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Toggle User Verification  (protected - admin)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI0ZTY1MTc0YTU0ODZjNTNkOWVkOWQiLCJpYXQiOjE3ODEyNDg3OTMsImV4cCI6MTc4MTI0OTY5M30.wgAHAC5LmrAHgz209GWXCbWf4kcIJeMaDxhTKIIJ2N8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "profileImage",
+                  "type": "file",
+                  "uuid": "f691eab3-9e28-4914-acf5-1bc4d7ee6f61",
+                  "src": "/D:/Matiearials tech/Forever-Full-Stack/frontend/src/assets/hero_img.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/users/6a2774717f619029e34003b6/verify",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "6a2774717f619029e34003b6",
+                "verify"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
     {
       "name": "Poducts",
       "item": [
+        {
+          "name": "Delete Any products (Hard delete) protected- admin",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI0ZTY1MTc0YTU0ODZjNTNkOWVkOWQiLCJpYXQiOjE3ODEyNDMxNTUsImV4cCI6MTc4MTI0NDA1NX0.V_aIblcR4T5Ms6-_xR82TpY03QEEN2csyw1q7Py7BD8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/products/6a2b97b46957ce96fb17ec6d/hard",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "6a2b97b46957ce96fb17ec6d",
+                "hard"
+              ]
+            }
+          },
+          "response": []
+        },
         {
           "name": "Get My Products - Search, filter (Protected)",
           "protocolProfileBehavior": {
@@ -381,7 +582,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4MTQ1NzEsImV4cCI6MTc4MDgxNTQ3MX0.uSX0aTU9CXzvTbzNj6ZP6MLE6ofW3gjwmbAkM03iW_0",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEyMzc3MjgsImV4cCI6MTc4MTIzODYyOH0.crNXQLPdKQv-Q4txj0NvXIfy_eK8_qJMyDtO8WQlQWQ",
                   "type": "string"
                 }
               ]
@@ -393,7 +594,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://localhost:8000/api/v1/products/my?condition=new&category=motorcycle,parts",
+              "raw": "http://localhost:8000/api/v1/products/my",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -428,11 +629,13 @@
                 },
                 {
                   "key": "condition",
-                  "value": "new"
+                  "value": "new",
+                  "disabled": true
                 },
                 {
                   "key": "category",
-                  "value": "motorcycle,parts"
+                  "value": "motorcycle,parts",
+                  "disabled": true
                 }
               ]
             }
@@ -440,7 +643,7 @@
           "response": []
         },
         {
-          "name": "Get Products - Search, filter (Public)",
+          "name": "Get Products - Search, filter, pagination (Public)",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -462,7 +665,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://localhost:8000/api/v1/products",
+              "raw": "http://localhost:8000/api/v1/products?page=1&limit=4",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -503,6 +706,14 @@
                   "key": "category",
                   "value": "motorcycle,parts",
                   "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "4"
                 }
               ]
             }
@@ -539,7 +750,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4OTM0ODYsImV4cCI6MTc4MDg5NDM4Nn0.0HYdRRBkZ7C_MK6iTMesKxrhRYMid1uhEHZnclXpSg4",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI1MGZhNjUzODIyOWU2YjJmODZiMTUiLCJpYXQiOjE3ODEyNDMzMjQsImV4cCI6MTc4MTI0NDIyNH0.x6Q6nr2MbAusq9cV3DszTU0ofZlPG8eWkdUrMpm-fTk",
                   "type": "string"
                 }
               ]
@@ -658,19 +869,15 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4MTM4NzQsImV4cCI6MTc4MDgxNDc3NH0.lSQ_0I5EDbSdlPAHoNZP7iRdl8agQOZQb8CDpy-MBMk",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI0ZTY1MTc0YTU0ODZjNTNkOWVkOWQiLCJpYXQiOjE3ODEyNDI0MTMsImV4cCI6MTc4MTI0MzMxM30.W_q7BRWbi1i0xi-nCis_-uQUEVM76_aST26TzAh2WSs",
                   "type": "string"
                 }
               ]
             },
             "method": "DELETE",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"price\": 700,\r\n  \"title\": \"Updated Yamaha Exhaust\"\r\n}"
-            },
             "url": {
-              "raw": "http://localhost:8000/api/v1/products/6a250d5e80708885f550146e",
+              "raw": "http://localhost:8000/api/v1/products/6a263d649b8f5cff8f32ec9e",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -680,7 +887,7 @@
                 "api",
                 "v1",
                 "products",
-                "6a250d5e80708885f550146e"
+                "6a263d649b8f5cff8f32ec9e"
               ]
             }
           },
