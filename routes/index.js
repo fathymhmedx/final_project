@@ -4,10 +4,12 @@ const authRoutes = require('../modules/auth/auth.routes');
 const userRoutes = require('../modules/users/users.routes');
 const productRoutes = require('../modules/products/products.routes');
 const wishlistRoutes = require('../modules/users/wishlist/wishlist.routes');
+const rideEventsRoutes = require('../modules/rideEvents/rideEvents.routes');
 
 router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
 router.use('/products', productRoutes);
 router.use("/wishlist", wishlistRoutes);
+router.use("/ride-events", rideEventsRoutes);
 
 module.exports = router;
