@@ -5,6 +5,27 @@ class ApiFeatures {
         this.paginationResult = {};
     }
 
+    // SORT
+    sort() {
+        if (this.queryString.sort) {
+
+            const sortBy =
+                this.queryString.sort
+                    .split(",")
+                    .join(" ");
+
+            this.query =
+                this.query.sort(sortBy);
+
+        } else {
+
+            // default newest first
+            this.query =
+                this.query.sort("-createdAt");
+        }
+
+        return this;
+    }
     // FILTER
     filter() {
         const queryObj = { ...this.queryString };
