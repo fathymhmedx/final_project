@@ -1023,6 +1023,431 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Ride Events",
+      "item": [
+        {
+          "name": "Create Ride Event (Protected - user)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\":\"Sunrise Ride\",\r\n  \"description\":\"Morning motorcycle ride\",\r\n  \"type\":\"group\",\r\n  \"meetingPoint\":\"Ras El Bar\",\r\n  \"startDate\":\"2026-08-10T08:00:00Z\",\r\n  \"maxParticipants\":20,\r\n  \"difficulty\":\"medium\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/ride-events",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "ride-events"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Events public",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/ride-events?page=1&limit=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "ride-events"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                },
+                {
+                  "key": "keyword",
+                  "value": "sunrise",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get upcoming Public",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/ride-events/upcoming",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "ride-events",
+                "upcoming"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "sunrise",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Event Details public",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/ride-events/6a2d669caae26601696ddfb1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "ride-events",
+                "6a2d669caae26601696ddfb1"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "sunrise",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Join Ride (Protected - user)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/ride-events/6a2d669caae26601696ddfb1/join",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "ride-events",
+                "6a2d669caae26601696ddfb1",
+                "join"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "sunrise",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Leave Ride (Protected - user)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/ride-events/6a2d669caae26601696ddfb1/leave",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "ride-events",
+                "6a2d669caae26601696ddfb1",
+                "leave"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "sunrise",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Events Protected",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODE0MjMwNjUsImV4cCI6MTc4MTQyMzk2NX0.hn8Ou55P8BXyIgDSGYR9yDaHN7jMa84MNETG-het0Dk",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/ride-events/my-events",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "ride-events",
+                "my-events"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "sunrise",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Event (Protected - user)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"test Ras el bar\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/ride-events/6a2d669caae26601696ddfb1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "ride-events",
+                "6a2d669caae26601696ddfb1"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "sunrise",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Event (Protected - user, admin)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/ride-events/6a2d669caae26601696ddfb1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "ride-events",
+                "6a2d669caae26601696ddfb1"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "sunrise",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
