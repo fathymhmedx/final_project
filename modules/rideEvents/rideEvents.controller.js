@@ -95,73 +95,73 @@ exports.getRideEvent = asyncHandler(async (req, res) => {
 
 exports.joinRideEvent = asyncHandler(async (req, res) => {
 
-    const event = await RideEvent.findById(
-        req.params.id
+    const event = await RideEvent.findOneAndUpdate(
+        {
+            _id: req.params.id,
+            isArchived: false,
+            participants: { $ne: req.user._id },
+            $expr: {
+                $lt: ["$participantsCount", "$maxParticipants"]
+            }
+        },
+        {
+            $addToSet: {
+                participants: req.user._id
+            },
+            $inc: {
+                participantsCount: 1
+            }
+        },
+        {
+            new: true
+        }
     );
 
     if (!event) {
-        throw new ApiError("Ride event not found", 404);
+        throw new ApiError("Cannot join event", 400);
     }
-
-    if (event.isArchived) {
-        throw new ApiError("Ride event unavailable", 400);
-    }
-
-    const alreadyJoined = event.participants.some((id) => id.toString() === req.user._id.toString());
-
-    if (alreadyJoined) {
-        throw new ApiError("Already joined", 400);
-    }
-
-    if (event.participantsCount >= event.maxParticipants) {
-        throw new ApiError("Ride is full", 400);
-    }
-
-    event.participants.push(
-        req.user._id
-    );
-
-    event.participantsCount += 1;
-
-    await event.save();
 
     res.status(200).json({
         status: "success",
-        message: "Joined successfully",
+        message: "Joined successfully"
     });
-
 });
 
 /**
  * @desc Leave Event
  * @route DELETE /api/v1/ride-events/:id/leave
  * @access Private
- */ 
+ */
 exports.leaveRideEvent = asyncHandler(async (req, res) => {
-    const event = await RideEvent.findById(req.params.id);
+
+    const event =
+        await RideEvent.findOneAndUpdate(
+            {
+                _id: req.params.id,
+                participants: req.user._id
+            },
+            {
+                $pull: {
+                    participants: req.user._id
+                },
+                $inc: {
+                    participantsCount: -1
+                }
+            },
+            {
+                new: true
+            }
+        );
 
     if (!event) {
-        throw new ApiError("Ride event not found", 404);
-    }
-
-    const joined = event.participants.some((id) => id.toString() === req.user._id.toString());
-
-    if (!joined) {
         throw new ApiError("You are not joined", 400);
     }
 
-    event.participants = event.participants.filter(
-        (id) => id.toString() !== req.user._id.toString()
-    );
-
-    event.participantsCount -= 1;
-
-    await event.save();
-
     res.status(200).json({
         status: "success",
-        message: "Left successfully",
+        message: "Left successfully"
     });
+
 });
 
 
@@ -195,27 +195,34 @@ exports.getMyRideEvents = asyncHandler(async (req, res) => {
  * @access Event Creator
 */
 exports.updateRideEvent = asyncHandler(async (req, res) => {
-    const event = await RideEvent.findById(req.params.id);
 
-    if (!event) {
-        throw new ApiError("Ride event not found", 404);
+    const updated = await RideEvent.findOneAndUpdate(
+        {
+            _id: req.params.id,
+            createdBy: req.user._id,
+            isArchived: false
+        },
+        req.body,
+        {
+            new: true,
+            runValidators: true
+        }
+    );
+
+    if (!updated) {
+        throw new ApiError(
+            "Ride event not found or unauthorized",
+            404
+        );
     }
-
-    if (event.createdBy.toString() !== req.user._id.toString()) {
-        throw new ApiError("Unauthorized", 403);
-    }
-
-    const updated = await RideEvent.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true
-    });
 
     res.status(200).json({
         status: "success",
         data: {
-            updated
+            event: updated
         }
     });
+
 });
 
 /**
@@ -224,25 +231,36 @@ exports.updateRideEvent = asyncHandler(async (req, res) => {
  * @access Admin or Event Creator
  */
 exports.deleteRideEvent = asyncHandler(async (req, res) => {
-    const event = await RideEvent.findById(req.params.id);
+
+    const filter = {
+        _id: req.params.id,
+        isArchived: false
+    };
+
+    if (req.user.role !== "admin") {
+        filter.createdBy = req.user._id;
+    }
+
+    const event = await RideEvent.findOneAndUpdate(
+        filter,
+        {
+            isArchived: true
+        },
+        {
+            new: true
+        }
+    );
 
     if (!event) {
-        throw new ApiError("Ride event not found", 404);
+        throw new ApiError(
+            "Ride event not found or unauthorized",
+            404
+        );
     }
-
-    const allowed = event.createdBy.toString() === req.user._id.toString() || req.user.role === "admin";
-
-    if (!allowed) {
-        throw new ApiError("Unauthorized", 403);
-    }
-
-    event.isArchived = true;
-
-    await event.save();
 
     res.status(200).json({
         status: "success",
-        message: "Ride archived"
+        message: "Ride archived successfully"
     });
 
 });
@@ -260,7 +278,8 @@ exports.getUpcomingEvents = asyncHandler(async (req, res) => {
                     new Date()
             },
             isArchived: false
-        }).limit(5).sort("startDate");
+        }).sort({ startDate: 1 })
+            .limit(5)
 
     res.status(200).json({
         status: "success",

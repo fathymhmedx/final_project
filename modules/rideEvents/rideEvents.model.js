@@ -21,7 +21,7 @@ const rideEventSchema = new mongoose.Schema(
         },
 
         createdBy: {
-            type: mongoose.Schema.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "User",
             required: true
         },
@@ -49,24 +49,27 @@ const rideEventSchema = new mongoose.Schema(
 
         maxParticipants: {
             type: Number,
-            default: 20
+            default: 20,
+            min: 2
         },
 
         participants: [
             {
-                type: mongoose.Schema.ObjectId,
+                type: mongoose.Schema.Types.ObjectId,
                 ref: "User"
             }
         ],
 
         participantsCount: {
             type: Number,
-            default: 0
+            default: 0,
+            min: 0
         },
 
         distance: {
             type: Number,
-            default: 0
+            default: 0,
+            min: 0
         },
 
         difficulty: {
@@ -93,6 +96,16 @@ const rideEventSchema = new mongoose.Schema(
 rideEventSchema.index({
     title: "text",
     description: "text"
+});
+
+rideEventSchema.index({
+    isArchived: 1,
+    startDate: 1
+});
+
+rideEventSchema.index({
+    participants: 1,
+    isArchived: 1
 });
 const rideEvent = mongoose.model("RideEvent", rideEventSchema);
 
