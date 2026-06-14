@@ -66,3 +66,31 @@ exports.resizeProductImages = asyncHandler(async (req, res, next) => {
 
     next();
 });
+
+exports.resizeRideEventImage = asyncHandler(async (req, res, next) => {
+
+    if (!req.files?.coverImage) return next();
+
+    const file = req.files.coverImage[0];
+
+    const uploadDir = path.join(
+        __dirname,
+        "../../uploads/ride-events"
+    );
+
+    await fs.promises.mkdir(uploadDir, { recursive: true });
+
+    const fileName = `ride-event-${uuidv4()}-${Date.now()}.webp`;
+
+    const filePath = path.join(uploadDir, fileName);
+
+    await sharp(file.buffer)
+        .resize(1600, 900)
+        .toFormat("webp")
+        .webp({ quality: 90 })
+        .toFile(filePath);
+
+    req.body.coverImage = fileName;
+
+    next();
+});

@@ -19,12 +19,15 @@ const {
     getEventsQuerySchema,
 } = require("./rideEvents.validators");
 
+const { uploadFields } = require("../../shared/middlewares/uploadImage.middleware");
+const { resizeRideEventImage } = require("../../shared/middlewares/imageProcessing.middleware");
+
 const { protect, authorizeRoles } = require("../../shared/middlewares/auth.middleware");
 const router = express.Router();
 
 
 // PUBLIC
-router.get("/my-events",protect, getMyRideEvents);
+router.get("/my-events", protect, getMyRideEvents);
 router.get("/", validate(getEventsQuerySchema, "query"), getRideEvents);
 
 router.get("/upcoming", getUpcomingEvents);
@@ -35,7 +38,13 @@ router.get("/:id", validate(eventIdSchema, "params"), getRideEvent);
 // PRIVATE
 router.use(protect);
 
-router.post("/", validate(createRideEventSchema), createRideEvent);
+router.post("/",
+    uploadFields([
+        { name: "coverImage", maxCount: 1 },
+    ]),
+    resizeRideEventImage,
+    validate(createRideEventSchema),
+    createRideEvent);
 
 router.post("/:id/join", validate(eventIdSchema, "params"), joinRideEvent);
 
@@ -47,6 +56,10 @@ router.delete("/:id/leave", validate(eventIdSchema, "params"), leaveRideEvent);
 router.patch(
     "/:id",
     validate(eventIdSchema, "params"),
+    uploadFields([
+        { name: "coverImage", maxCount: 1 },
+    ]),
+    resizeRideEventImage,
     validate(updateRideEventSchema),
     updateRideEvent
 );

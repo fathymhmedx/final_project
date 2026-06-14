@@ -41,6 +41,7 @@ exports.createRideEventSchema = Joi.object({
             "medium",
             "hard"
         ),
+    coverImage: Joi.string().optional()
 });
 
 exports.updateRideEventSchema = Joi.object({
@@ -70,6 +71,8 @@ exports.updateRideEventSchema = Joi.object({
             "medium",
             "hard"
         ),
+    coverImage: Joi.string().optional()
+
 
 }).min(1);
 
