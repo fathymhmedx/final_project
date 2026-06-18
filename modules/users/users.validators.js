@@ -16,11 +16,11 @@ exports.userIdParamSchema = Joi.object({
 exports.updateMeSchema = Joi.object({
     name: Joi.string().trim().min(3).max(50),
 
-    bio: Joi.string().trim().max(300),
+    bio: Joi.string().trim().max(300).allow(""),
 
-    location: Joi.string().trim().max(100),
+    location: Joi.string().trim().max(100).allow(""),
 
-    bikeType: Joi.string().trim().max(50),
+    bikeType: Joi.string().trim().max(50).allow(""),
 
     profileImage: Joi.string().allow(""),
 
