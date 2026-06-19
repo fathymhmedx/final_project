@@ -39,9 +39,9 @@ exports.getAllProducts = asyncHandler(async (req, res) => {
         status: { $ne: "archived" }
     }).lean(), req.query)
         .search()
-        .filter()
-        .paginate()
+        .filter();
 
+    await features.paginate();
     const products = await features.query;
 
     res.status(200).json({

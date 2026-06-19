@@ -339,7 +339,7 @@ exports.toggleUserVerification = asyncHandler(async (req, res, next) => {
 exports.getTopRiders = asyncHandler(async (req, res) => {
     const limit = parseInt(req.query.limit) || 5;
     
-    const users = await User.find({ isBlocked: false })
+    const users = await User.find({ isBlocked: false, role: { $ne: "admin" } })
         .sort({ followersCount: -1 })
         .limit(limit)
         .select("name rank followersCount profileImage isVerified bio bikeType");

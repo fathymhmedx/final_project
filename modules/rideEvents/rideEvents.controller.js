@@ -42,8 +42,9 @@ exports.getRideEvents = asyncHandler(async (req, res) => {
     )
         .search()
         .filter()
-        .sort()
-        .paginate();
+        .sort();
+
+    await features.paginate();
 
     const events = await features.query;
 

@@ -74,14 +74,21 @@ class ApiFeatures {
         return this;
     }
 
-    paginate() {
+    async paginate() {
         const page = Number(this.queryString.page) || 1;
         const limit = Number(this.queryString.limit) || 10;
         const skip = (page - 1) * limit;
 
+        const totalDocuments = await this.query.clone().countDocuments();
+        const numberOfPages = Math.ceil(totalDocuments / limit);
+
         this.paginationResult = {
             currentPage: page,
             limit,
+            totalDocuments,
+            numberOfPages,
+            next: page < numberOfPages ? page + 1 : null,
+            prev: page > 1 ? page - 1 : null
         };
 
         this.query = this.query.skip(skip).limit(limit);
