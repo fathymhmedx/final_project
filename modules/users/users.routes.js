@@ -10,7 +10,8 @@ const {
     unfollowUser,
     getUserFollowers,
     getUserFollowing,
-    toggleUserVerification
+    toggleUserVerification,
+    getTopRiders
 } = require("./users.controller");
 const { protect, authorizeRoles } = require("../../shared/middlewares/auth.middleware");
 const validate = require("../../shared/middlewares/validation/validate.middleware");
@@ -27,6 +28,7 @@ const {
 router.get("/", protect, authorizeRoles("admin"), getAllUsers);
 router.get("/me", protect, getMe);
 router.patch("/me", protect, uploadSingleImage("profileImage"), resizeUserImage, validate(updateMeSchema), updateMe);
+router.get("/top-riders", getTopRiders);
 router.get("/:id", getUserById);
 router.patch("/:id/toggle-block", protect, authorizeRoles("admin"), toggleBlockUser);
 

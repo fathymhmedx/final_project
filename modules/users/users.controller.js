@@ -330,3 +330,25 @@ exports.toggleUserVerification = asyncHandler(async (req, res, next) => {
         },
     });
 });
+
+/**
+ * @desc    Get top riders based on followers
+ * @route   GET /api/v1/users/top-riders
+ * @access  Public
+ */
+exports.getTopRiders = asyncHandler(async (req, res) => {
+    const limit = parseInt(req.query.limit) || 5;
+    
+    const users = await User.find({ isBlocked: false })
+        .sort({ followersCount: -1 })
+        .limit(limit)
+        .select("name rank followersCount profileImage isVerified bio bikeType");
+
+    res.status(200).json({
+        status: "success",
+        results: users.length,
+        data: {
+            users,
+        },
+    });
+});
