@@ -21,7 +21,7 @@ class ApiFeatures {
 
             // default newest first
             this.query =
-                this.query.sort("-createdAt");
+                this.query.sort("-createdAt -_id");
         }
 
         return this;

@@ -69,9 +69,9 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
             $inc: { viewsCount: 1 }
         },
         {
-            new: true
+            returnDocument: "after"
         }
-    ).populate("seller", "name email");
+    ).populate("seller", "name email profileImage");
 
     if (!product) {
         return next(new ApiError("Product not found", 404));
@@ -106,7 +106,7 @@ exports.updateProduct = asyncHandler(async (req, res, next) => {
         req.params.id,
         req.body,
         {
-            new: true,
+            returnDocument: "after",
             runValidators: true,
         }
     );
@@ -160,7 +160,7 @@ exports.getMyProducts = asyncHandler(async (req, res) => {
         Product.find({
             seller: req.user._id,
             isDeleted: false,
-        }).populate("seller", "name email"),
+        }).populate("seller", "name email profileImage"),
         req.query
     ).search().filter()
 

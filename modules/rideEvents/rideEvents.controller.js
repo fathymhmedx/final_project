@@ -114,7 +114,7 @@ exports.joinRideEvent = asyncHandler(async (req, res) => {
             }
         },
         {
-            new: true
+            returnDocument: "after"
         }
     );
 
@@ -150,7 +150,7 @@ exports.leaveRideEvent = asyncHandler(async (req, res) => {
                 }
             },
             {
-                new: true
+                returnDocument: "after"
             }
         );
 
@@ -205,7 +205,7 @@ exports.updateRideEvent = asyncHandler(async (req, res) => {
         },
         req.body,
         {
-            new: true,
+            returnDocument: "after",
             runValidators: true
         }
     );
@@ -248,7 +248,7 @@ exports.deleteRideEvent = asyncHandler(async (req, res) => {
             isArchived: true
         },
         {
-            new: true
+            returnDocument: "after"
         }
     );
 
