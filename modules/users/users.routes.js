@@ -19,6 +19,7 @@ const { updateMeSchema, userIdParamSchema } = require("./users.validators");
 
 const {
     uploadSingleImage,
+    uploadFields,
 } = require("../../shared/middlewares/uploadImage.middleware");
 
 const {
@@ -27,7 +28,15 @@ const {
 
 router.get("/", protect, authorizeRoles("admin"), getAllUsers);
 router.get("/me", protect, getMe);
-router.patch("/me", protect, uploadSingleImage("profileImage"), resizeUserImage, validate(updateMeSchema), updateMe);
+router.patch("/me", protect, 
+    uploadFields([
+        { name: "profileImage", maxCount: 1 },
+        { name: "coverImage", maxCount: 1 }
+    ]), 
+    resizeUserImage, 
+    validate(updateMeSchema), 
+    updateMe
+);
 router.get("/top-riders", getTopRiders);
 router.get("/:id", getUserById);
 router.patch("/:id/toggle-block", protect, authorizeRoles("admin"), toggleBlockUser);

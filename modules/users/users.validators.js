@@ -24,4 +24,6 @@ exports.updateMeSchema = Joi.object({
 
     profileImage: Joi.string().allow(""),
 
+    coverImage: Joi.string().allow(""),
+
 });

@@ -31,6 +31,10 @@ const userSchema =  mongoose.Schema(
       type: String,
       default: "",
     },
+    coverImage: {
+      type: String,
+      default: "",
+    },
     bikeType: {
       type: String,
       default: "",

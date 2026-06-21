@@ -32,7 +32,7 @@ exports.updateMe = asyncHandler(async (req, res, next) => {
         throw new ApiError("No valid fields to update", 400);
     }
 
-    if (updates.bio || updates.location || updates.bikeType || updates.profileImage) {
+    if (updates.bio || updates.location || updates.bikeType || updates.profileImage || updates.coverImage) {
         updates.profileCompleted = true;
     }
 
@@ -65,7 +65,7 @@ exports.updateMe = asyncHandler(async (req, res, next) => {
  */
 exports.getUserById = asyncHandler(async (req, res, next) => {
     const user = await User.findById(req.params.id).select(
-        "name bio location bikeType profileImage createdAt rank isVerified followersCount followingCount"
+        "name bio location bikeType profileImage coverImage createdAt rank isVerified followersCount followingCount"
     );
 
     if (!user) {
@@ -342,7 +342,7 @@ exports.getTopRiders = asyncHandler(async (req, res) => {
     const users = await User.find({ isBlocked: false, role: { $ne: "admin" } })
         .sort({ followersCount: -1 })
         .limit(limit)
-        .select("name rank followersCount profileImage isVerified bio bikeType");
+        .select("name rank followersCount profileImage coverImage isVerified bio bikeType");
 
     res.status(200).json({
         status: "success",
