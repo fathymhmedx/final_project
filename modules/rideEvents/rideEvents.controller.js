@@ -1,4 +1,5 @@
 const RideEvent = require("./rideEvents.model");
+const Conversation = require("../community/chat/conversation.model");
 const asyncHandler = require("express-async-handler");
 const ApiError = require("../../shared/errors/ApiError");
 const ApiFeatures = require("../../shared/utils/apiFeatures");
@@ -122,6 +123,26 @@ exports.joinRideEvent = asyncHandler(async (req, res) => {
         throw new ApiError("Cannot join event", 400);
     }
 
+    // Auto-join or create group chat for this event
+    let groupChat = await Conversation.findOne({ relatedEvent: event._id });
+    if (!groupChat) {
+        // Find the event again to get title and coverImage if not populated (it's not populated above)
+        // Wait, event variable here is the updated document because of returnDocument: "after"
+        groupChat = await Conversation.create({
+            type: "group",
+            participants: [event.createdBy, req.user._id],
+            relatedEvent: event._id,
+            groupName: event.title,
+            groupImage: event.coverImage,
+            admin: event.createdBy
+        });
+    } else {
+        if (!groupChat.participants.includes(req.user._id)) {
+            groupChat.participants.push(req.user._id);
+            await groupChat.save();
+        }
+    }
+
     res.status(200).json({
         status: "success",
         message: "Joined successfully"
@@ -157,6 +178,12 @@ exports.leaveRideEvent = asyncHandler(async (req, res) => {
     if (!event) {
         throw new ApiError("You are not joined", 400);
     }
+
+    // Remove from group chat
+    await Conversation.findOneAndUpdate(
+        { relatedEvent: event._id },
+        { $pull: { participants: req.user._id } }
+    );
 
     res.status(200).json({
         status: "success",
