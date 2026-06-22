@@ -21,7 +21,7 @@ router
 
 router
     .route("/logout")
-    .post(protect, logout);
+    .post(logout);
 
 router
     .route("/refresh-token")

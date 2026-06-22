@@ -29,11 +29,11 @@ exports.register = asyncHandler(async (req, res) => {
     res.status(201).json({
         status: "success",
         message: "User registered successfully",
+        accessToken,
         data: {
             id: user._id,
             name: user.name,
             email: user.email,
-            accessToken,
         },
     });
 });
