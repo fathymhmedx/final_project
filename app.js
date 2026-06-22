@@ -7,6 +7,25 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const { notFoundHandler, globalErrorHandler } = require("./shared/middlewares/error/globalErrorHandler.js");
 const v1Routes = require('./routes/index.js');
+const http = require("http");
+const { Server } = require("socket.io");
+const chatSocket = require("./modules/community/chat/chat.socket");
+
+// Create HTTP Server for Socket.IO
+const server = http.createServer(app);
+
+// Setup Socket.IO
+const io = new Server(server, {
+  cors: {
+    origin: process.env.CLIENT_URL,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  }
+});
+app.set("io", io);
+
+// Initialize Socket.IO handlers
+chatSocket(io);
 
 // Connect Database
 connectedDB();
@@ -46,6 +65,6 @@ app.use(globalErrorHandler);
 // Server
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
