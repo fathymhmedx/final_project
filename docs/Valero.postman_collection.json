@@ -26,7 +26,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"name\": \"Fathy\",\r\n  \"email\": \"fathy211@gmail.com\",\r\n  \"password\": \"Fathy1234@\"\r\n}",
+              "raw": "{\r\n  \"name\": \"Fathy\",\r\n  \"email\": \"fathy21111@gmail.com\",\r\n  \"password\": \"Fathy1234@\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -67,7 +67,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n//    // USER\r\n  \"email\": \"rider1@gmail.com\",\r\n  \"password\": \"12345678\"\r\n\r\n//    // ADMIN\r\n//   \"email\": \"admin@gmail.com\",\r\n//   \"password\": \"Admin@123\"\r\n}",
+              "raw": "{\r\n//    // USER\r\n//   \"email\": \"rider1@gmail.com\",\r\n//   \"password\": \"12345678\"\r\n  \"email\": \"fathy2111s1@gmail.com\",\r\n  \"password\": \"Fathy1234@\"\r\n//    // ADMIN\r\n//   \"email\": \"admin@gmail.com\",\r\n//   \"password\": \"Admin@123\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -128,7 +128,7 @@
           "response": []
         },
         {
-          "name": "Logout (Protected)",
+          "name": "Logout",
           "request": {
             "auth": {
               "type": "bearer",
@@ -184,7 +184,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTMyNjE5NzY4MjQzNzUzNGQ3NjY3OTciLCJpYXQiOjE3ODE2ODY2NzksImV4cCI6MTc4MTY4NzU3OX0.ztb-md-0x82JM3PWVl823uGqvBH6OyWSGlN3ZRzyOno",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM5ZGFiNmM3NGY2OTljNjE3NmFmNDUiLCJpYXQiOjE3ODIxNzgxNTcsImV4cCI6MTc4MjE3OTA1N30.ubnLmpY-RsuHnPiCbGb5EHdfZEar7UOE0AHc67z_9TQ",
                   "type": "string"
                 }
               ]
@@ -223,7 +223,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI0ZTY1MTc0YTU0ODZjNTNkOWVkOWQiLCJpYXQiOjE3ODA4MDg3MTAsImV4cCI6MTc4MDgwOTYxMH0.c9BoMsklmq3PcCMwvii3lKY8rOVWd1NcLbfbmJ4lvqM",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM5ZGFiNmM3NGY2OTljNjE3NmFmNDUiLCJpYXQiOjE3ODIxNzY0MzksImV4cCI6MTc4MjE3NzMzOX0.dgNSR5BrrSvD1AhdNh2erEe0SYDwRYkO1Aw9Af3Op3Y",
                   "type": "string"
                 }
               ]
@@ -297,7 +297,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTMyNjE5NzY4MjQzNzUzNGQ3NjY3OTciLCJpYXQiOjE3ODE2ODY2NzksImV4cCI6MTc4MTY4NzU3OX0.ztb-md-0x82JM3PWVl823uGqvBH6OyWSGlN3ZRzyOno",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIxNzUxMTQsImV4cCI6MTc4MjE3NjAxNH0.ApH0LPaP3MEgjJZCAl_Hiebtl3TN77cJeYfxtc4_io8",
                   "type": "string"
                 }
               ]
@@ -311,7 +311,13 @@
                   "key": "profileImage",
                   "type": "file",
                   "uuid": "f691eab3-9e28-4914-acf5-1bc4d7ee6f61",
-                  "src": "/D:/Matiearials tech/Forever-Full-Stack/frontend/src/assets/hero_img.png"
+                  "src": "postman-cloud:///1f07ef4a-8ac9-4cd0-bc8b-f684c49896db"
+                },
+                {
+                  "key": "name",
+                  "value": "test2",
+                  "type": "text",
+                  "uuid": "1840e787-02a4-47c5-a9d0-4dc8d8b8e376"
                 }
               ]
             },
@@ -445,7 +451,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/v1/users/6a2774717f619029e34003b6/followers",
+              "raw": "http://localhost:8000/api/v1/users/6a39dab6c74f699c6176af45/followers",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -455,7 +461,7 @@
                 "api",
                 "v1",
                 "users",
-                "6a2774717f619029e34003b6",
+                "6a39dab6c74f699c6176af45",
                 "followers"
               ]
             }
@@ -493,7 +499,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI0ZTY1MTc0YTU0ODZjNTNkOWVkOWQiLCJpYXQiOjE3ODEyNDg3OTMsImV4cCI6MTc4MTI0OTY5M30.wgAHAC5LmrAHgz209GWXCbWf4kcIJeMaDxhTKIIJ2N8",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzgiLCJpYXQiOjE3ODIxNzY2OTUsImV4cCI6MTc4MjE3NzU5NX0.KysIIknSh5sfbbinplupIcYqW7wnvztkm4_kweAEPBY",
                   "type": "string"
                 }
               ]
@@ -512,7 +518,7 @@
               ]
             },
             "url": {
-              "raw": "http://localhost:8000/api/v1/users/6a2774717f619029e34003b6/verify",
+              "raw": "http://localhost:8000/api/v1/users/6a35aab28ecd3fba65a651cc/verify",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -522,7 +528,7 @@
                 "api",
                 "v1",
                 "users",
-                "6a2774717f619029e34003b6",
+                "6a35aab28ecd3fba65a651cc",
                 "verify"
               ]
             }
@@ -646,7 +652,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTMyNjE5NzY4MjQzNzUzNGQ3NjY3OTciLCJpYXQiOjE3ODE2ODY2NzksImV4cCI6MTc4MTY4NzU3OX0.ztb-md-0x82JM3PWVl823uGqvBH6OyWSGlN3ZRzyOno",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIxNzcwMDgsImV4cCI6MTc4MjE3NzkwOH0.ALlM-zqaQUlQG6dt6wYf6Nti9IPs7062YFGzzjKR8Ew",
                   "type": "string"
                 }
               ]
@@ -713,14 +719,7 @@
           },
           "request": {
             "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJTVFVERU5UIiwiaWF0IjoxNzczMjUyOTc0LCJleHAiOjE3NzM4NTc3NzR9.dMuwkKTvIiAFHi-lXK3Z0EBGzogFxldc42tRbw7z7EI",
-                  "type": "string"
-                }
-              ]
+              "type": "noauth"
             },
             "method": "GET",
             "header": [],
@@ -729,7 +728,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://localhost:8000/api/v1/products?page=1&limit=4",
+              "raw": "http://localhost:8000/api/v1/products?keyword=Yamaha",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -753,8 +752,7 @@
                 },
                 {
                   "key": "keyword",
-                  "value": "yamaha",
-                  "disabled": true
+                  "value": "Yamaha"
                 },
                 {
                   "key": "category",
@@ -773,11 +771,13 @@
                 },
                 {
                   "key": "page",
-                  "value": "1"
+                  "value": "1",
+                  "disabled": true
                 },
                 {
                   "key": "limit",
-                  "value": "4"
+                  "value": "10",
+                  "disabled": true
                 }
               ]
             }
@@ -790,7 +790,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/v1/products/6a250d5e80708885f550146e",
+              "raw": "http://localhost:8000/api/v1/products/6a35aab28ecd3fba65a651d0",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -800,7 +800,7 @@
                 "api",
                 "v1",
                 "products",
-                "6a250d5e80708885f550146e"
+                "6a35aab28ecd3fba65a651d0"
               ]
             }
           },
@@ -814,7 +814,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTMyNjE5NzY4MjQzNzUzNGQ3NjY3OTciLCJpYXQiOjE3ODE2ODY2NzksImV4cCI6MTc4MTY4NzU3OX0.ztb-md-0x82JM3PWVl823uGqvBH6OyWSGlN3ZRzyOno",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIxNzcwMDgsImV4cCI6MTc4MjE3NzkwOH0.ALlM-zqaQUlQG6dt6wYf6Nti9IPs7062YFGzzjKR8Ew",
                   "type": "string"
                 }
               ]
@@ -892,7 +892,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI1MGZhNjUzODIyOWU2YjJmODZiMTUiLCJpYXQiOjE3ODA4MTM3NTgsImV4cCI6MTc4MDgxNDY1OH0.wlB1tVc4NvT4n3fDpCDLRskkHfuzs3P87Tdm560pH2s",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIxNzcwMDgsImV4cCI6MTc4MjE3NzkwOH0.ALlM-zqaQUlQG6dt6wYf6Nti9IPs7062YFGzzjKR8Ew",
                   "type": "string"
                 }
               ]
@@ -909,7 +909,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/v1/products/6a250d5e80708885f550146e",
+              "raw": "http://localhost:8000/api/v1/products/6a35aab28ecd3fba65a651d0",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -919,7 +919,7 @@
                 "api",
                 "v1",
                 "products",
-                "6a250d5e80708885f550146e"
+                "6a35aab28ecd3fba65a651d0"
               ]
             }
           },
@@ -970,7 +970,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTFmZTM3Y2E1OWQyN2NiYTZmODE0NjYiLCJpYXQiOjE3ODA4OTAyODEsImV4cCI6MTc4MDg5MTE4MX0.gQmc9GQRdrAwEA1aM7obs3FkuZr97cQh0IlnSfJ71wA",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIxNzcwMDgsImV4cCI6MTc4MjE3NzkwOH0.ALlM-zqaQUlQG6dt6wYf6Nti9IPs7062YFGzzjKR8Ew",
                   "type": "string"
                 }
               ]
@@ -979,7 +979,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"productId\": \"6a263d649b8f5cff8f32ec9e\"\r\n}",
+              "raw": "{\r\n    \"productId\": \"6a35aab28ecd3fba65a651de\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1027,7 +1027,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/v1/wishlist/6a263d649b8f5cff8f32ec9e",
+              "raw": "http://localhost:8000/api/v1/wishlist/6a35aab28ecd3fba65a651de",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -1037,7 +1037,7 @@
                 "api",
                 "v1",
                 "wishlist",
-                "6a263d649b8f5cff8f32ec9e"
+                "6a35aab28ecd3fba65a651de"
               ]
             }
           },
@@ -1099,7 +1099,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM5ZGFiNmM3NGY2OTljNjE3NmFmNDUiLCJpYXQiOjE3ODIxNzg4NzksImV4cCI6MTc4MjE3OTc3OX0.fL2Buu9LsATA8K5iYqWFX1ImY1T3fRmVxwVdsip8foY",
                   "type": "string"
                 }
               ]
@@ -1263,7 +1263,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://localhost:8000/api/v1/ride-events/6a2d669caae26601696ddfb1",
+              "raw": "http://localhost:8000/api/v1/ride-events/6a39e186c74f699c6176af78",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -1273,7 +1273,7 @@
                 "api",
                 "v1",
                 "ride-events",
-                "6a2d669caae26601696ddfb1"
+                "6a39e186c74f699c6176af78"
               ],
               "query": [
                 {
@@ -1294,7 +1294,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM5ZGFiNmM3NGY2OTljNjE3NmFmNDUiLCJpYXQiOjE3ODIxNzgxNTcsImV4cCI6MTc4MjE3OTA1N30.ubnLmpY-RsuHnPiCbGb5EHdfZEar7UOE0AHc67z_9TQ",
                   "type": "string"
                 }
               ]
@@ -1306,7 +1306,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://localhost:8000/api/v1/ride-events/6a2d669caae26601696ddfb1/join",
+              "raw": "http://localhost:8000/api/v1/ride-events/6a39e186c74f699c6176af78/join",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -1316,7 +1316,7 @@
                 "api",
                 "v1",
                 "ride-events",
-                "6a2d669caae26601696ddfb1",
+                "6a39e186c74f699c6176af78",
                 "join"
               ],
               "query": [
@@ -1338,7 +1338,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM5ZGFiNmM3NGY2OTljNjE3NmFmNDUiLCJpYXQiOjE3ODIxNzgxNTcsImV4cCI6MTc4MjE3OTA1N30.ubnLmpY-RsuHnPiCbGb5EHdfZEar7UOE0AHc67z_9TQ",
                   "type": "string"
                 }
               ]
@@ -1350,7 +1350,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://localhost:8000/api/v1/ride-events/6a2d669caae26601696ddfb1/leave",
+              "raw": "http://localhost:8000/api/v1/ride-events/6a39e186c74f699c6176af78/leave",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -1360,7 +1360,7 @@
                 "api",
                 "v1",
                 "ride-events",
-                "6a2d669caae26601696ddfb1",
+                "6a39e186c74f699c6176af78",
                 "leave"
               ],
               "query": [
@@ -1385,7 +1385,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODE0MjMwNjUsImV4cCI6MTc4MTQyMzk2NX0.hn8Ou55P8BXyIgDSGYR9yDaHN7jMa84MNETG-het0Dk",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM5ZGFiNmM3NGY2OTljNjE3NmFmNDUiLCJpYXQiOjE3ODIxNzgxNTcsImV4cCI6MTc4MjE3OTA1N30.ubnLmpY-RsuHnPiCbGb5EHdfZEar7UOE0AHc67z_9TQ",
                   "type": "string"
                 }
               ]
@@ -1428,7 +1428,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTI3NzQ3MTdmNjE5MDI5ZTM0MDAzYjYiLCJpYXQiOjE3ODEzNjAyNzQsImV4cCI6MTc4MTM2MTE3NH0.W_HkwoXiDzRHMwLppiLe_bK8q9yj5bu5Y66RnDB7ylQ",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM5ZGFiNmM3NGY2OTljNjE3NmFmNDUiLCJpYXQiOjE3ODIxNzg4NzksImV4cCI6MTc4MjE3OTc3OX0.fL2Buu9LsATA8K5iYqWFX1ImY1T3fRmVxwVdsip8foY",
                   "type": "string"
                 }
               ]
@@ -1436,16 +1436,18 @@
             "method": "PATCH",
             "header": [],
             "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"title\": \"test Ras el bar\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "coverImage",
+                  "type": "file",
+                  "uuid": "18e540a8-de23-424b-9140-833885bd63af",
+                  "src": "postman-cloud:///1f07efc5-c954-4470-b236-314adfe79385"
                 }
-              }
+              ]
             },
             "url": {
-              "raw": "http://localhost:8000/api/v1/ride-events/6a2d669caae26601696ddfb1",
+              "raw": "http://localhost:8000/api/v1/ride-events/6a39e44fba6c2aa7c3b875a6",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -1455,7 +1457,7 @@
                 "api",
                 "v1",
                 "ride-events",
-                "6a2d669caae26601696ddfb1"
+                "6a39e44fba6c2aa7c3b875a6"
               ],
               "query": [
                 {
@@ -1510,6 +1512,964 @@
             }
           },
           "response": []
+        }
+      ]
+    },
+    {
+      "name": "Community",
+      "item": [
+        {
+          "name": "Comments",
+          "item": [
+            {
+              "name": "Add Comment to Post",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"content\": \"Great picture!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/community/posts/:postId/comments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "posts",
+                    ":postId",
+                    "comments"
+                  ],
+                  "variable": [
+                    {
+                      "key": "postId",
+                      "value": "POST_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Post Comments",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/posts/:postId/comments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "posts",
+                    ":postId",
+                    "comments"
+                  ],
+                  "variable": [
+                    {
+                      "key": "postId",
+                      "value": "POST_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Reply to Comment",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"content\": \"I totally agree!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/community/comments/:id/reply",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "comments",
+                    ":id",
+                    "reply"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "COMMENT_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Comment Replies",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/comments/:id/replies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "comments",
+                    ":id",
+                    "replies"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "COMMENT_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Toggle Like Comment",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/comments/:id/like",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "comments",
+                    ":id",
+                    "like"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "COMMENT_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Comment",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"content\": \"Updated comment content\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/community/comments/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "comments",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "COMMENT_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Comment",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/comments/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "comments",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "COMMENT_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Posts",
+          "item": [
+            {
+              "name": "Create Post Protected",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIwNjI5NzksImV4cCI6MTc4MjA2Mzg3OX0.L99VDUxj8Wdo6E-HZYy9M-N1TxzxLsKWP8D1qQ5Vbso",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "content",
+                      "value": "Loving my new ride through the mountains! #VeloraSummerRun",
+                      "type": "text"
+                    },
+                    {
+                      "key": "images",
+                      "type": "file",
+                      "src": "/D:/Nodejs Projects/Final project Maiar/Velora_Motorcycle_Marketplace/backend/uploads/ride-events/event6.jpg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Posts (Feed) - Protected",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIxNjE2NzUsImV4cCI6MTc4MjE2MjU3NX0.KoaJ01ehZzKMQR1aFDlW4G25lUdmLFYaCWEAKxHEAmE",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts?page=1&limit=10",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "hashtag",
+                      "value": "velorasummerrun",
+                      "disabled": true
+                    },
+                    {
+                      "key": "following",
+                      "value": "true",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Post - Protected",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get User posts - protected",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIxNjE2NzUsImV4cCI6MTc4MjE2MjU3NX0.KoaJ01ehZzKMQR1aFDlW4G25lUdmLFYaCWEAKxHEAmE",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts/user/6a35aab28ecd3fba65a651ca",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts",
+                    "user",
+                    "6a35aab28ecd3fba65a651ca"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Post - Protected",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"content\": \"Updated post content!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts/:id",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "POST_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Post - Protected",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIwNjA4NjksImV4cCI6MTc4MjA2MTc2OX0.VK8lTbpcbKx8MR6vYs6ifTdKBhdCPCBY7U811Isfezo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts/6a38195f0ae3306c0423eeb6",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts",
+                    "6a38195f0ae3306c0423eeb6"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Toggle Like Post - Protected",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIwNjM5NTIsImV4cCI6MTc4MjA2NDg1Mn0.7C5f4b8YkofEFUpeGBIBBeMDTPapFL1g0Md8xK3XdWg",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts/6a382016db38f094b89f56a1/like",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts",
+                    "6a382016db38f094b89f56a1",
+                    "like"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Toggle Bookmark Post - Protected",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIwNjM5NTIsImV4cCI6MTc4MjA2NDg1Mn0.7C5f4b8YkofEFUpeGBIBBeMDTPapFL1g0Md8xK3XdWg",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts/6a382016db38f094b89f56a1/bookmark",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts",
+                    "6a382016db38f094b89f56a1",
+                    "bookmark"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get My Posts - Protected",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIwNjQ5NzEsImV4cCI6MTc4MjA2NTg3MX0.AIbjSxZMRWU4Wqha1FYhViYAxhs1KtQCWymGroLTMfs",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts/my/posts",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts",
+                    "my",
+                    "posts"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get My Bookmarks  - Protected",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIwNjM5NTIsImV4cCI6MTc4MjA2NDg1Mn0.7C5f4b8YkofEFUpeGBIBBeMDTPapFL1g0Md8xK3XdWg",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts/my/bookmarks",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts",
+                    "my",
+                    "bookmarks"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Trending Hashtags - Protected",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIwNjQ5NzEsImV4cCI6MTc4MjA2NTg3MX0.AIbjSxZMRWU4Wqha1FYhViYAxhs1KtQCWymGroLTMfs",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts/trending/hashtags",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts",
+                    "trending",
+                    "hashtags"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Trending Posts - Protected",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTM1YWFiMjhlY2QzZmJhNjVhNjUxYzkiLCJpYXQiOjE3ODIwNjQ5NzEsImV4cCI6MTc4MjA2NTg3MX0.AIbjSxZMRWU4Wqha1FYhViYAxhs1KtQCWymGroLTMfs",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/v1/community/posts/trending/posts",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "community",
+                    "posts",
+                    "trending",
+                    "posts"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Chat",
+          "item": [
+            {
+              "name": "Start Conversation",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"participantId\": \"USER_ID_HERE\",\n    \"relatedProduct\": \"PRODUCT_ID_HERE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/community/chat/conversations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "chat",
+                    "conversations"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get My Conversations",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/chat/conversations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "chat",
+                    "conversations"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Conversation Details",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/chat/conversations/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "chat",
+                    "conversations",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "CONVERSATION_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Messages",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/chat/conversations/:id/messages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "chat",
+                    "conversations",
+                    ":id",
+                    "messages"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "CONVERSATION_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Send Message (REST Fallback)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "content",
+                      "value": "Hello there!",
+                      "type": "text"
+                    },
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "value": null
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/community/chat/conversations/:id/messages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "chat",
+                    "conversations",
+                    ":id",
+                    "messages"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "CONVERSATION_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mark Conversation Read",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/chat/conversations/:id/read",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "chat",
+                    "conversations",
+                    ":id",
+                    "read"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "CONVERSATION_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Unread Chat Count",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/chat/unread-count",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "chat",
+                    "unread-count"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Notifications",
+          "item": [
+            {
+              "name": "Get My Notifications",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/notifications",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "notifications"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mark Single Notification Read",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/notifications/:id/read",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "notifications",
+                    ":id",
+                    "read"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "NOTIFICATION_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mark All Read",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/notifications/read-all",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "notifications",
+                    "read-all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Unread Notifications Count",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/notifications/unread-count",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "notifications",
+                    "unread-count"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Notification",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/community/notifications/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "community",
+                    "notifications",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "NOTIFICATION_ID_HERE"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     }
