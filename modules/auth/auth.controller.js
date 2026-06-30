@@ -59,6 +59,11 @@ exports.login = asyncHandler(async (req, res) => {
         throw new ApiError('Incorrect email or password', 401);
     }
 
+    // Check if user is blocked
+    if (user.isBlocked) {
+        throw new ApiError('Your account has been blocked. Please contact support.', 403);
+    }
+
     // Generate token 
     const { accessToken, refreshToken } = generateTokens(user._id);
 
@@ -110,6 +115,11 @@ exports.refreshToken = asyncHandler(async (req, res, next) => {
 
     if (!user) {
         return next(new ApiError("User no longer exists", 401));
+    }
+
+    // Check if user is blocked
+    if (user.isBlocked) {
+        return next(new ApiError("Your account has been blocked. Please contact support.", 403));
     }
 
     const { accessToken } = generateTokens(user._id);

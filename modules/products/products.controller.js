@@ -37,12 +37,15 @@ exports.getAllProducts = asyncHandler(async (req, res) => {
     const features = new ApiFeatures(Product.find({
         isDeleted: false,
         status: { $ne: "archived" }
-    }).lean(), req.query)
+    }).populate("seller", "name email profileImage").lean(), req.query)
         .search()
         .filter();
 
     await features.paginate();
-    const products = await features.query;
+    let products = await features.query;
+
+    // Filter out products where the seller was hard-deleted from DB
+    products = products.filter(product => product.seller !== null);
 
     res.status(200).json({
         status: "success",

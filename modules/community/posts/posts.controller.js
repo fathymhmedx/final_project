@@ -61,6 +61,9 @@ exports.getPosts = asyncHandler(async (req, res) => {
 
     // Following filter
     if (req.query.following === 'true') {
+        if (!req.user) {
+            return next(new ApiError("You must be logged in to view followed posts", 401));
+        }
         const currentUser = await User.findById(req.user._id).select('following');
         filter.author = { $in: [...currentUser.following] }; // Only posts from followed users, NOT own posts
         delete req.query.following;

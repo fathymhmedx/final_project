@@ -36,7 +36,14 @@ exports.protect = asyncHandler(async (req, res, next) => {
     return next(new ApiError("User no longer exists", 401));
   }
 
-  // 4) Attach user to request
+  // 4) Check if user is blocked
+  if (currentUser.isBlocked) {
+    return next(
+      new ApiError("Your account has been blocked. Please contact support.", 403)
+    );
+  }
+
+  // 5) Attach user to request
   req.user = currentUser;
 
   next();
