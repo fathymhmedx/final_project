@@ -1,31 +1,12 @@
-const { verifyToken } = require("../../../shared/utils/jwt.utils");
-const User = require("../../users/users.model");
+const { protectSocket } = require("../../../shared/middlewares/authSocket.middleware");
 const Conversation = require("./conversation.model");
 const Message = require("./message.model");
 
 module.exports = (io) => {
-    // Authentication middleware for Socket.IO
-    io.use(async (socket, next) => {
-        try {
-            const token = socket.handshake.auth.token || socket.handshake.headers.authorization?.split(" ")[1];
-            
-            if (!token) {
-                return next(new Error("Authentication error: No token provided"));
-            }
-
-            const decoded = verifyToken(token, process.env.JWT_SECRET_KEY);
-            const user = await User.findById(decoded.userId).select("-password");
-
-            if (!user) {
-                return next(new Error("Authentication error: User not found"));
-            }
-
-            socket.user = user;
-            next();
-        } catch (error) {
-            next(new Error("Authentication error: Invalid token"));
-        }
-    });
+    // Socket Authentication
+    io.use(
+        protectSocket
+    );
 
     io.on("connection", (socket) => {
         console.log(`User connected to chat: ${socket.user._id}`);
@@ -37,49 +18,99 @@ module.exports = (io) => {
         // socket.broadcast.emit("user_online", socket.user._id);
 
         socket.on("join_conversation", async (conversationId) => {
-            // Verify user is part of conversation
-            const conversation = await Conversation.findOne({
-                _id: conversationId,
-                participants: socket.user._id
-            });
+            try {
+                // Verify user is part of conversation
+                const conversation = await Conversation.findOne({
+                    _id: conversationId,
+                    participants: socket.user._id
+                });
 
-            if (conversation) {
+                if (!conversation) {
+                    return socket.emit(
+                        "chat_error",
+                        {
+                            message:
+                                "Conversation not found"
+                        }
+                    );
+                }
                 socket.join(conversationId);
-                console.log(`User ${socket.user._id} joined conversation ${conversationId}`);
+
+                console.log(
+                    `User ${socket.user._id} joined conversation ${conversationId}`
+                );
+
+                socket.emit(
+                    "conversation_joined",
+                    {
+                        conversationId
+                    }
+                );
+
+            } catch (err) {
+                socket.emit("chat_error", {
+                    message: "Failed to join"
+                });
             }
+
         });
 
         socket.on("leave_conversation", (conversationId) => {
             socket.leave(conversationId);
+
+            socket.emit("conversation_left", {
+                conversationId
+            });
         });
 
         socket.on("send_message", async (data) => {
             try {
                 const { conversationId, content } = data;
+                if (
+                    !conversationId ||
+                    (!content?.trim())
+                ) {
+                    return;
+                }
 
                 const conversation = await Conversation.findOne({
                     _id: conversationId,
                     participants: socket.user._id
                 });
 
-                if (!conversation) return;
+                if (!conversation) {
+                    return socket.emit(
+                        "chat_error",
+                        {
+                            message:
+                                "Conversation not found"
+                        }
+                    );
+                }
 
                 const message = await Message.create({
                     conversation: conversationId,
                     sender: socket.user._id,
-                    content: content,
+                    content: content.trim(),
                     readBy: [socket.user._id]
                 });
 
                 await message.populate("sender", "name profileImage");
 
-                // Update lastMessage
-                conversation.lastMessage = {
-                    content: content,
-                    sender: socket.user._id,
-                    timestamp: new Date()
-                };
-                await conversation.save();
+                await Conversation.updateOne(
+                    {
+                        _id: conversationId
+                    },
+                    {
+                        $set: {
+                            lastMessage: {
+                                content: content.trim(),
+                                sender: socket.user._id,
+                                timestamp: new Date()
+                            }
+                        }
+                    }
+                );
 
                 // Emit to all users in the conversation room
                 io.to(conversationId).emit("new_message", message);
@@ -101,14 +132,41 @@ module.exports = (io) => {
             }
         });
 
-        socket.on("typing", (data) => {
-            const { conversationId, isTyping } = data;
-            socket.to(conversationId).emit("user_typing", {
-                conversationId,
-                userId: socket.user._id,
-                name: socket.user.name,
-                isTyping
-            });
+        socket.on("typing", async (data) => {
+            try {
+                const { conversationId, isTyping } = data;
+
+                const exists =
+                    await Conversation.exists({
+                        _id: conversationId,
+                        participants:
+                            socket.user._id
+                    });
+
+                if (!exists) return;
+
+                socket
+                    .to(conversationId)
+                    .emit(
+                        "user_typing",
+                        {
+                            conversationId,
+                            userId:
+                                socket.user._id,
+                            name:
+                                socket.user.name,
+                            isTyping
+                        }
+                    );
+            } catch {
+                socket.emit(
+                    "chat_error",
+                    {
+                        message:
+                            "Typing failed"
+                    }
+                );
+            }
         });
 
         socket.on("disconnect", () => {

@@ -148,7 +148,7 @@ exports.sendMessage = asyncHandler(async (req, res, next) => {
     const { content } = req.body;
     const image = req.body.image; // Assume middleware sets this
 
-    if (!content && !image) {
+    if (!content?.trim() && !image) {
         return next(new ApiError("Message must contain text or image", 400));
     }
 
@@ -164,18 +164,25 @@ exports.sendMessage = asyncHandler(async (req, res, next) => {
     const message = await Message.create({
         conversation: conversation._id,
         sender: req.user._id,
-        content,
+        content: content?.trim(),
         image: image ? { url: image } : undefined,
         readBy: [req.user._id]
     });
 
-    // Update conversation lastMessage
-    conversation.lastMessage = {
-        content: content || "Image",
-        sender: req.user._id,
-        timestamp: new Date()
-    };
-    await conversation.save();
+    await Conversation.updateOne(
+        {
+            _id: conversation._id
+        },
+        {
+            $set: {
+                lastMessage: {
+                    content: content?.trim() || "Image",
+                    sender: req.user._id,
+                    timestamp: new Date()
+                }
+            }
+        }
+    );
 
     res.status(201).json({
         status: "success",
@@ -199,8 +206,8 @@ exports.markAsRead = asyncHandler(async (req, res, next) => {
     }
 
     await Message.updateMany(
-        { conversation: conversation._id, readBy: { $ne: req.user._id } },
-        { $push: { readBy: req.user._id } }
+        { conversation: conversation._id, readBy: { $ne: req.user._id }, isDeleted: false },
+        { $addToSet: { readBy: req.user._id } }
     );
 
     res.status(200).json({

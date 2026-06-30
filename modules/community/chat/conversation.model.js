@@ -51,10 +51,38 @@ const conversationSchema = new mongoose.Schema(
     }
 );
 
-// Indexes
-conversationSchema.index({ participants: 1 });
-conversationSchema.index({ relatedEvent: 1 });
-conversationSchema.index({ relatedProduct: 1, participants: 1 });
+// Indexes// Inbox listing
+conversationSchema.index({
+    participants: 1,
+    isActive: 1,
+    "lastMessage.timestamp": -1
+});
+
+// Event group chat
+conversationSchema.index({
+    relatedEvent: 1
+});
+
+// Marketplace chat lookup
+conversationSchema.index({
+    relatedProduct: 1,
+    participants: 1
+});
+
+// Prevent duplicate direct chats
+conversationSchema.index(
+    {
+        type: 1,
+        participants: 1,
+        relatedProduct: 1
+    },
+    {
+        unique: true,
+        partialFilterExpression: {
+            type: "direct"
+        }
+    }
+);
 
 const Conversation = mongoose.model("Conversation", conversationSchema);
 

@@ -37,8 +37,24 @@ const messageSchema = new mongoose.Schema(
 );
 
 // Indexes
-messageSchema.index({ conversation: 1, createdAt: -1 });
+// Get messages in conversation
+messageSchema.index({
+    conversation: 1,
+    createdAt: -1
+});
 
+// Get conversation messages + soft delete + sorting
+messageSchema.index({
+    conversation: 1,
+    isDeleted: 1,
+    createdAt: -1
+});
+
+// Unread messages lookup
+messageSchema.index({
+    conversation: 1,
+    readBy: 1
+});
 const Message = mongoose.model("Message", messageSchema);
 
 module.exports = Message;

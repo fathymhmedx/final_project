@@ -5,11 +5,15 @@ exports.startConversationSchema = Joi.object({
     relatedProduct: Joi.string().regex(/^[0-9a-fA-F]{24}$/).optional()
 });
 
-exports.sendMessageSchema = Joi.object({
-    content: Joi.string().max(2000).allow("")
-}).custom((value, helpers) => {
-    return value;
-});
+exports.sendMessageSchema =
+    Joi.object({
+        content: Joi.string()
+            .trim()
+            .max(2000),
+
+        image: Joi.any()
+    })
+        .or("content", "image");
 
 exports.conversationIdSchema = Joi.object({
     id: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required().messages({
